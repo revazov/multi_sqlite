@@ -19,6 +19,7 @@ void Writer::start()
     forever {
         QSqlQuery query(baseCon);
         if(!query.exec("INSERT INTO test_table VALUES(1);")) {
+            //throwing just to terminate program
             throw(std::logic_error(QString(__PRETTY_FUNCTION__ + query.lastError().text()).toStdString()));
             qDebug() << __PRETTY_FUNCTION__ << query.lastError().text();
             break;
