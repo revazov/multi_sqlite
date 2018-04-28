@@ -18,10 +18,12 @@ void Reader::start()
     forever {
         QSqlQuery query(baseCon);
         if(!query.exec("select count(*) from test_table;")) {
+            //throwing just to terminate program
             throw(std::logic_error(QString(__PRETTY_FUNCTION__ + query.lastError().text()).toStdString()));
             break;
         }
         if(!query.first()) {
+            //throwing just to terminate program
             throw(std::logic_error(QString(__PRETTY_FUNCTION__ + query.lastError().text()).toStdString()));
             break;
         }
